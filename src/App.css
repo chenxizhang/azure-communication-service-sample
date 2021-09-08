@@ -1,38 +1,24 @@
 .App {
-  text-align: center;
+  font-family: sans-serif;
+  text-align: left;
+  padding: 25px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.chatContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 55vh;
 }
 
-.App-link {
-  color: #61dafb;
+.chatInputBox {
+  flex: 0 0 30px;
+  margin: 5px 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chatMessageList {
+  flex: 1;
+  max-height: 80vh;
+  padding: 20px;
+  border: 1px solid #e9e9e6;
+  overflow-y: scroll;
 }
