@@ -18,10 +18,12 @@ REACT_APP_connectionString=xxxxxxx
 
 ![image](https://user-images.githubusercontent.com/1996954/132493277-06a6363a-2821-429a-9858-25d27446ab22.png)
 
+要运行本项目，本地计算机需要安装 `NodeJS`的最新版本。
+
 
 ## 如何进行测试
 
-通过 `yarn start` 启动项目，通常会自动打开 `http://localhost:3000` 这个地址。然后可以分别通过多个不同的浏览器窗口来进行测试。例如你用多个浏览器，或者你用一个浏览器，但一个用户在正常模式，另外一个用户在隐私模式。
+通过 `yarn` 或 `npm install` 在本地安装依赖，然后 `yarn start` 或 `npm start` 启动项目，通常会自动打开 `http://localhost:3000` 这个地址。然后可以分别通过多个不同的浏览器窗口来进行测试。例如你用多个浏览器，或者你用一个浏览器，但一个用户在正常模式，另外一个用户在隐私模式。
 
 
 ## 单个用户创建聊天室并且发送消息
