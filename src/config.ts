@@ -4,11 +4,11 @@ import { CommunicationIdentityClient } from "@azure/communication-identity";
 
 const config = {
     getChatClient: async (): Promise<{ userId: string; client: ChatClient }> => {
-        const endpointUrl = "https://acsdemoforares.communication.azure.com/";
+        const endpointUrl = process.env.REACT_APP_endpointUrl;
 
-        const connectionString = `endpoint=${endpointUrl};accesskey=PHbMYu8pHWJOQVCd3uo3SPnY1j73C2e83xEwH4kTsWzEzK2iI1njJ5Ymo4n4hEvhuqRELb3feczEU+I1sHRjeQ==`;
+        const connectionString = process.env.REACT_APP_connectionString;
 
-        const identityClient = new CommunicationIdentityClient(connectionString);
+        const identityClient = new CommunicationIdentityClient(connectionString!);
 
         let _userId = localStorage.getItem("userid");
         if (!_userId) {
@@ -23,7 +23,7 @@ const config = {
             ["chat"]
         );
         const tokenCredential = new AzureCommunicationTokenCredential(token);
-        const chatClient = new ChatClient(endpointUrl, tokenCredential);
+        const chatClient = new ChatClient(endpointUrl!, tokenCredential);
         return { userId: _userId, client: chatClient };
     }
 };
