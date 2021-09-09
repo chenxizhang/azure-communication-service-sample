@@ -24,14 +24,14 @@ const Chat = (props: {
     const [chatMessages, setChatMessages] = useState<ChatMessageItem[]>([]);
 
     useEffect(() => {
-        //TODO:加载历史消息列表
+        //TODO #5:加载历史消息列表的排序问题（目前看好像是最新的在最顶上）
 
         const historyMessages = props.threadClient
             ?.listMessages()
             .byPage({ maxPageSize: 20 });
 
         if (historyMessages) {
-            //TODO: 还可以读取更多，但显示仅读取最后一页，20条
+            //TODO: #4 还可以读取更多，但显示仅读取最后一页，20条
             historyMessages.next().then(({ value }: { value: ChatMessage[] }) => {
                 if (value && value.length > 0) {
                     const result = value

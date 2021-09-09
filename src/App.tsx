@@ -9,7 +9,7 @@ import { ChatClient } from "@azure/communication-chat";
 import pubsub from "pubsub-js";
 
 export const UserContext = React.createContext<CurrentUser>(undefined!);
-
+//TODO #6 考虑实现聊天室关闭 @chenxizhang
 export default function App() {
   const [username, setUserName] = useState<string>();
   const [userId, setUserId] = useState<string>();
@@ -141,14 +141,14 @@ export default function App() {
               <Button
                 type="primary"
                 onClick={() => {
-                  //TODO: 这里要考虑去重
+                  //TODO: #2 这里要考虑去重
 
                   const items = chatClient
                     .listChatThreads()
                     .byPage({ maxPageSize: 20 });
                   if (items) {
                     items.next().then((x) => {
-                      //这里只加载了第一页，还可以完善，根据x.done的值判断是否要继续读取下一页
+                      //TODO #3:这里只加载了第一页，还可以完善，根据x.done的值判断是否要继续读取下一页
                       if (x.value && x.value.length > 0) {
                         const list = x.value.map((v: any) => ({
                           threadId: v.id,
