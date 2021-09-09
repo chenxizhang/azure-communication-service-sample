@@ -7,7 +7,6 @@ import React from "react";
 import config from "./config";
 import { ChatClient } from "@azure/communication-chat";
 import pubsub from "pubsub-js";
-import { CurrentUser, ThreadInfo } from "./Global";
 
 export const UserContext = React.createContext<CurrentUser>(undefined!);
 

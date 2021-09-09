@@ -2,7 +2,6 @@ import { Space, Avatar, Divider, Typography } from "antd";
 import React, { useContext } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { UserContext } from "./App";
-import { ChatMessageItem } from "./Global";
 
 const ChatMessageLine = ({
     avatar,

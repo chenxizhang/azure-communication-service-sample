@@ -10,7 +10,6 @@ import {
 } from "@azure/communication-signaling";
 import { UserAddOutlined } from "@ant-design/icons";
 import moment from "moment";
-import { ChatMessageItem } from "./Global";
 
 const { Option } = Mentions;
 
