@@ -94,15 +94,7 @@ const Chat = (props: {
                                     ]
                                 })
                                 .then((x) => {
-                                    message.success("添加成功，请通知对方点击加载聊天");
-                                    props.threadClient?.sendMessage(
-                                        {
-                                            content: `add,${id},${props.threadId},${name},${username}`
-                                        },
-                                        {
-                                            senderDisplayName: "system"
-                                        }
-                                    );
+                                    message.success("添加成功，对方会自动添加到聊天室");
                                 })
                                 .catch((reason) => {
                                     message.error(reason);

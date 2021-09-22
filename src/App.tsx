@@ -7,6 +7,7 @@ import React from "react";
 import config from "./config";
 import { ChatClient } from "@azure/communication-chat";
 import pubsub from "pubsub-js";
+import { CommunicationUserKind } from "@azure/communication-signaling";
 
 export const UserContext = React.createContext<CurrentUser>(undefined!);
 //TODO #6 考虑实现聊天室关闭 @chenxizhang
@@ -16,6 +17,7 @@ export default function App() {
   const [chatClient, setChatClient] = useState<ChatClient>();
   const [threads, setThreads] = useState<ThreadInfo[]>([]);
   const [activeThread, setActiveThread] = useState<string>();
+
 
   useEffect(() => {
     const t = localStorage.getItem("username");
@@ -27,28 +29,24 @@ export default function App() {
         setChatClient(v.client);
 
         v.client.startRealtimeNotifications();
+        v.client.on("participantsAdded", (e) => {
+          if (e.participantsAdded.findIndex(x => (x.id as CommunicationUserKind).communicationUserId === v.userId) > -1) {
+            const client = v.client.getChatThreadClient(e.threadId);
+            client.getProperties().then((x) => {
+              setThreads((t) => [
+                {
+                  threadId: x.id!,
+                  displayName: x.topic,
+                  threadClient: client
+                },
+                ...t
+              ]);
+            });
+          }
+        });
+
         v.client.on("chatMessageReceived", (e) => {
-          //收到消息
-          if (
-            e.message.startsWith("add,") &&
-            e.senderDisplayName === "system"
-          ) {
-            const temp = e.message.split(",");
-            if (temp[1] === v.userId) {
-              //是添加本人
-              const client = v.client.getChatThreadClient(temp[2]);
-              client.getProperties().then((x) => {
-                setThreads((t) => [
-                  {
-                    threadId: x.id!,
-                    displayName: x.topic,
-                    threadClient: client
-                  },
-                  ...t
-                ]);
-              });
-            }
-          } else pubsub.publish(`message-${e.threadId}`, e);
+          pubsub.publish(`message-${e.threadId}`, e);
         });
       });
     }
