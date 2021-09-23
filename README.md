@@ -3,7 +3,7 @@
 
 ## 概述
 
-这个例子演示了如何用ACS SDK实现聊天，音视频会议，以及跟Teams集成的功能。目前实现了聊天（单聊，或多聊）的场景，其他功能后续再添加，敬请期待）。
+这个例子演示了如何用ACS SDK实现聊天，音视频会议，以及跟Teams集成的功能。目前实现了聊天（单聊，或多聊），加入Teams会议的场景，其他功能后续再添加，敬请期待）。
 
 ## 先决条件
 
@@ -68,7 +68,7 @@ REACT_APP_connectionString=xxxxxxx
 
 ![image](https://user-images.githubusercontent.com/1996954/132492588-7bf16ba7-c1da-463a-ae3e-706f2d25e89d.png)
 
-在第二个窗口点击 `加载聊天`，即可看到这个聊天室，并且带出来此前的聊天消息
+在第二个窗口不需要进行刷新即可看到这个聊天室，并且带出来此前的聊天消息
 
 ![image](https://user-images.githubusercontent.com/1996954/132492643-362f2358-6442-4d91-b839-dd88141048a0.png)
 
