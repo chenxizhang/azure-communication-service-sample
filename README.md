@@ -76,3 +76,16 @@ REACT_APP_connectionString=xxxxxxx
 
 ![image](https://user-images.githubusercontent.com/1996954/132492866-b7291396-28e4-4d6b-9fad-99bf7a7a7da2.png)
 
+
+## 加入Teams会议
+
+点击 “加入Teams会议” 的按钮，在弹出的对话框中输入Teams会议的链接，然后回车，即可用来宾账号加入到一个现有的Teams会议中。
+
+![image](https://user-images.githubusercontent.com/1996954/134468428-8cda88b3-2a30-4040-b8f2-ef018d2a0003.png)
+
+在这里还可以跟Teams会议用户直接聊天，如下图所示
+
+![image](https://user-images.githubusercontent.com/1996954/134468494-50459135-53bd-49d6-90e6-cc9239146423.png)
+
+
+
