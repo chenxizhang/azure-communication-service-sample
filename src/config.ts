@@ -1,9 +1,10 @@
 import { ChatClient } from "@azure/communication-chat";
 import { AzureCommunicationTokenCredential } from "@azure/communication-common";
 import { CommunicationIdentityClient } from "@azure/communication-identity";
+import { CallAgent, CallClient } from "@azure/communication-calling";
 
 const config = {
-    getChatClient: async (): Promise<{ userId: string; client: ChatClient }> => {
+    getChatClient: async (): Promise<{ userId: string; client: ChatClient, callAgent: CallAgent }> => {
         const endpointUrl = process.env.REACT_APP_endpointUrl;
 
         const connectionString = process.env.REACT_APP_connectionString;
@@ -20,11 +21,14 @@ const config = {
             {
                 communicationUserId: _userId
             },
-            ["chat"]
+            ["chat", "voip"]
         );
         const tokenCredential = new AzureCommunicationTokenCredential(token);
         const chatClient = new ChatClient(endpointUrl!, tokenCredential);
-        return { userId: _userId, client: chatClient };
+        const callClient = new CallClient();
+        const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: "ACS 用户" });
+
+        return { userId: _userId, client: chatClient, callAgent: callAgent };
     }
 };
 
