@@ -43,6 +43,14 @@
   dependencies:
     tslib "^2.0.0"
 
+"@azure/communication-calling@1.2.2-beta.1":
+  version "1.2.2-beta.1"
+  resolved "https://registry.yarnpkg.com/@azure/communication-calling/-/communication-calling-1.2.2-beta.1.tgz#9a4a081d9f05bf4c247dad10ffa46bb662a70a50"
+  integrity sha512-EqTuTUDGPAzys/E5qbrRAAcs/6n7L80SlKW0BHPy77Bdym9xrLjy2tYv/vzkbhkJSmSpzc9NlUrLV5creBjLuA==
+  dependencies:
+    "@azure/communication-common" "^1.0.0"
+    "@azure/logger" "^1.0.2"
+
 "@azure/communication-chat@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@azure/communication-chat/-/communication-chat-1.0.1.tgz#0b50cb84c51702ce34a9fe9f27f344e3b95b51cc"
@@ -211,7 +219,7 @@
     "@opentelemetry/api" "^0.10.2"
     tslib "^2.0.0"
 
-"@azure/logger@^1.0.0", "@azure/logger@~1.0.0":
+"@azure/logger@^1.0.0", "@azure/logger@^1.0.2", "@azure/logger@~1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@azure/logger/-/logger-1.0.2.tgz#ad2d06478eeda7835f53def7e4566981b47d9787"
   integrity sha512-YZNjNV0vL3nN2nedmcjQBcpCTo3oqceXmgiQtEm6fLpucjRZyQKAQruhCmCpRlB1iykqKJJ/Y8CDmT5rIE6IJw==

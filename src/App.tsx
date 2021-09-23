@@ -8,6 +8,7 @@ import config from "./config";
 import { ChatClient } from "@azure/communication-chat";
 import pubsub from "pubsub-js";
 import { CommunicationUserKind } from "@azure/communication-signaling";
+import { CallAgent } from "@azure/communication-calling";
 
 export const UserContext = React.createContext<CurrentUser>(undefined!);
 //TODO #6 考虑实现聊天室关闭 @chenxizhang
@@ -17,6 +18,7 @@ export default function App() {
   const [chatClient, setChatClient] = useState<ChatClient>();
   const [threads, setThreads] = useState<ThreadInfo[]>([]);
   const [activeThread, setActiveThread] = useState<string>();
+  const [callAgent, setCallAgent] = useState<CallAgent>();
 
 
   useEffect(() => {
@@ -27,6 +29,7 @@ export default function App() {
         setUserId(v.userId);
         //订阅用户添加的事件
         setChatClient(v.client);
+        setCallAgent(v.callAgent);
 
         v.client.startRealtimeNotifications();
         v.client.on("participantsAdded", (e) => {
@@ -161,6 +164,14 @@ export default function App() {
               >
                 加载聊天
               </Button>
+
+              <Button type="primary" onClick={() => {
+                const link = prompt("请输入会议链接");
+                if (link) {
+                  callAgent?.join({ meetingLink: link });
+                }
+
+              }}>加入Teams会议</Button>
             </>
           )}
         </Space>
